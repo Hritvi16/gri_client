@@ -1,3 +1,54 @@
+class AccountListResponse {
+  AccountListResponse({
+    List<Account>? accounts,});
+
+  AccountListResponse.fromJson(dynamic json) {
+    if (json['accounts'] != null) {
+      accounts = [];
+      json['accounts'].forEach((v) {
+        accounts?.add(Account.fromJson(v));
+      });
+    }
+  }
+
+  List<Account>? accounts;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (accounts != null) {
+      map['accounts'] = accounts?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
+}
+
+class AccountResponse {
+  AccountResponse({
+    Account? account,
+    List<Account>? family,});
+
+  AccountResponse.fromJson(dynamic json) {
+    account = Account.fromJson(json['account']);
+    if (json['family'] != null) {
+      family = [];
+      json['family'].forEach((v) {
+        family?.add(Account.fromJson(v));
+      });
+    }
+  }
+
+  Account? account;
+  List<Account>? family;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['account'] = account?.toJson();
+    if (family != null) {
+      map['family'] = family?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
+}
 
 class Account {
   Account({
@@ -20,7 +71,9 @@ class Account {
     String? createdBy,
     String? updatedAt,
     String? updatedBy,
-    String? isDelete,});
+    String? isDelete,
+    String? relation,
+  });
 
   Account.fromJson(dynamic json) {
     id = json['id'];
@@ -43,6 +96,7 @@ class Account {
     updatedAt = json['updated_at'];
     updatedBy = json['updated_by'];
     isDelete = json['is_delete'];
+    relation = json['relation'];
   }
   String? id;
   String? accId;
@@ -64,6 +118,7 @@ class Account {
   String? updatedAt;
   String? updatedBy;
   String? isDelete;
+  String? relation;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -87,6 +142,7 @@ class Account {
     map['updated_at'] = updatedAt;
     map['updated_by'] = updatedBy;
     map['is_delete'] = isDelete;
+    map['relation'] = relation;
     return map;
   }
 

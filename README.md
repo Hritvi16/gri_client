@@ -1,6 +1,6 @@
 # gri_client
 
-Green Root Investors Client
+Grass Root Investors Client
 
 ## Getting Started
 

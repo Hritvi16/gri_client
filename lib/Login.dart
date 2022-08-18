@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gri_client/Home.dart';
+import 'package:gri_client/HomeScreen.dart';
+import 'package:gri_client/OTPScreen.dart';
 import 'package:gri_client/api/APIConstant.dart';
 import 'package:gri_client/api/APIService.dart';
 import 'package:gri_client/colors/MyColors.dart';
@@ -41,7 +43,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                      "assets/logo/logo.png",
+                      "assets/logo/logo.jpg",
                       height: 120,
                       width: 120
                   ),
@@ -49,7 +51,7 @@ class _LoginState extends State<Login> {
                     height: MySize.size10(context),
                   ),
                   Text(
-                      "Green Root Investors",
+                      "Grass Root Investors",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 30,
@@ -96,15 +98,12 @@ class _LoginState extends State<Login> {
                       child: ElevatedButton(
                           onPressed: () {
                             if (mobile.text.length==10) {
-                              print("Validated");
 
                               ignore = true;
                               setState(() {
 
                               });
                               login();
-                            } else {
-                              print("Not Validated");
                             }
                           },
                           child: const Text("Login")),
@@ -127,25 +126,32 @@ class _LoginState extends State<Login> {
     data['mobile'] = mobile.text;
     data.addAll({APIConstant.act : APIConstant.login});
     LoginResponse loginResponse = await APIService().login(data);
-    print(data);
-    print(loginResponse.toJson());
 
     ignore = false;
     setState(() {
 
     });
-    Toast.sendToast(context, loginResponse.message??"");
 
     if(loginResponse.status=="Success" && loginResponse.message=="Logged In") {
+
       sharedPreferences.setString("id", loginResponse.account?.id??"");
       sharedPreferences.setString("name", loginResponse.account?.name??"");
       sharedPreferences.setString("mobile", mobile.text);
       sharedPreferences.setString("status", "logged in");
 
+      print("hello login");
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-              builder: (BuildContext context) => const Home()),
+              builder: (BuildContext context) => const HomeScreen()),
               (Route<dynamic> route) => false);
+      // Navigator.of(context).push(
+      //     MaterialPageRoute(
+      //         builder: (BuildContext context) =>
+      //     OTPScreen(id: loginResponse.account?.id??"", name: loginResponse.account?.name??"", mobile: mobile.text)));
+    }
+    else {
+
+      Toast.sendToast(context, loginResponse.message??"");
     }
   }
 }

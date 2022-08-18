@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "536728630553",
+    "project_id": "grass-root-investors",
+    "storage_bucket": "grass-root-investors.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536728630553:android:ec656749941a805b088188",
+        "android_client_info": {
+          "package_name": "com.ss.gri_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536728630553-h5irgsme37p4452a4fj4v7ecf66j4a33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ss.gri_client",
+            "certificate_hash": "c77a599012dd3ea8db5bc5f32f2953006f0b3866"
+          }
+        },
+        {
+          "client_id": "536728630553-vrvj00s3d9omohi6q6ilh1sge7u06c4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsk5FtJkbCAgW3eTv0knZFvfphBob8GV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536728630553-vrvj00s3d9omohi6q6ilh1sge7u06c4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
